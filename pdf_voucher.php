@@ -1,5 +1,5 @@
 <?php
-require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/../../autoload.php';
 use Spipu\Html2Pdf\Html2Pdf;
 
 /**
@@ -172,7 +172,7 @@ class PDFVoucher extends HTML2PDF {
 
     /**
      * Imprime el detalle para comprobantes tipo A
-     * 
+     *
      * @author NeoComplexx Group S.A.
      */
     function fill_A() {
@@ -208,7 +208,7 @@ class PDFVoucher extends HTML2PDF {
 
     /**
      * Imprime el detalle para comprobantes tipo B
-     * 
+     *
      * @author NeoComplexx Group S.A.
      */
     function fill_B() {
@@ -408,7 +408,7 @@ class PDFVoucher extends HTML2PDF {
                 $text_1 = $this->lang("CAE") .": ";
                 $text_2 = $this->voucher["cae"];
                 $text_3 = $this->lang("Fecha Vto. CAE") .": ";
-            
+
                 $tmp = DateTime::createFromFormat('Y-m-d',$this->voucher["fechaVencimientoCAE"]);
                 $text_4 = date_format($tmp, $this->lang('d/m/Y'));
 
@@ -459,7 +459,7 @@ class PDFVoucher extends HTML2PDF {
     /**
      * Determina si mostrar o no una parte del comprobante
      * @param element TAG del elemento a controlar
-     * 
+     *
      * @author NeoComplexx Group S.A.
      */
     private function show_element($element) {
@@ -474,7 +474,7 @@ class PDFVoucher extends HTML2PDF {
      * Genera un comprobante de AFIP con su correspondiente original/duplicado
      *
      * @param type $logo_path Ubicación de la imágen del logo
-     * 
+     *
      * @author NeoComplexx Group S.A.
      */
     function emitirPDF($logo_path) {
