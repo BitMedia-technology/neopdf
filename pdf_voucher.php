@@ -16,7 +16,7 @@ class PDFVoucher extends HTML2PDF {
     private $lang = array();
     const LANG_EN = 2;
 
-    function __construct($voucher, $config) {
+    function __construct($voucher, $config, $qr_data) {
         parent::__construct('P', 'A4', 'es');
         $this->config = $config;
         $vconfig = array();
@@ -39,6 +39,7 @@ class PDFVoucher extends HTML2PDF {
             include(__DIR__.'/language/es.php');
         }
         $this->lang = array_merge($this->lang, $lang);
+        $this->qr_data = base64_encode(json_encode($qr_data));
     }
 
     private function lang($key) {
@@ -422,6 +423,8 @@ class PDFVoucher extends HTML2PDF {
                 $text_4 = "&nbsp;";
                 $text_5 = "&nbsp;";
             }
+            $qr = 'https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=https://www.afip.gob.ar/fe/qr/?p='. $this->qr_data;
+            $qr_img = '<img style="width: 13%; margin-left: 130px; margin-top: -20px;" src="'.$qr.'">';
             $this->html .= '        <tr>';
             $this->html .= '		<td class="" style="width: 30%;">' . $text_left . "</td>";
             $this->html .= '		<td class="center-text" style="width: 40%;">';
@@ -451,6 +454,7 @@ class PDFVoucher extends HTML2PDF {
                 $barcode_number = $cuit . $type . $pos . $cae . $fecha;
 
                 $this->html .= '<barcode type="I25+" value="' . $barcode_number . '" label="label" style="width:20cm; height:7mm; font-size: 7px"></barcode>';
+                $this->html .= $qr_img;
             }
             $this->html .= '</page_footer>';
         }
