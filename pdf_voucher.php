@@ -13,10 +13,14 @@ class PDFVoucher extends HTML2PDF {
     private $voucher = null;
     private $finished = false; //Determina si es la ultima pagina
     private $html = "";
+    private $qr_data = "";
     private $lang = array();
     const LANG_EN = 2;
 
-    function __construct($voucher, $config, $qr_data) {
+    const GOOGLE_CHARTS = '';
+    const AFIP_QR_URL = '';
+
+    function __construct($voucher, $config) {
         parent::__construct('P', 'A4', 'es');
         $this->config = $config;
         $vconfig = array();
@@ -39,6 +43,27 @@ class PDFVoucher extends HTML2PDF {
             include(__DIR__.'/language/es.php');
         }
         $this->lang = array_merge($this->lang, $lang);
+        $this->setQrData($voucher);
+    }
+
+    protected function setQrData($voucher = []) {
+        $qr_data = [
+            'ver' => 1,
+            'fecha' => date("Y-m-d",strtotime($voucher['fechaComprobante'])),
+            'cuit' => $this->config['TRADE_CUIT'],
+            'ptoVta' => $voucher['numeroPuntoVenta'],
+            'tipoCmp' => $voucher['codigoTipoComprobante'],
+            'nroCmp' => $voucher['numeroComprobante'],
+            'importe' => $voucher['importeTotal'],
+            'moneda' => $voucher['codigoMoneda'],
+            'ctz' => $voucher['cotizacionMoneda'],
+            'tipoCodAut' => 'E',
+            'codAut' => $voucher['cae'],
+
+            'tipoDocRec' => $voucher['codigoTipoDocumento'],
+            'nroDocRec' => $voucher['numeroDocumento']
+        ];
+
         $this->qr_data = base64_encode(json_encode($qr_data));
     }
 
