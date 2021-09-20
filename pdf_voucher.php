@@ -17,8 +17,8 @@ class PDFVoucher extends HTML2PDF {
     private $lang = array();
     const LANG_EN = 2;
 
-    const GOOGLE_CHARTS = '';
-    const AFIP_QR_URL = '';
+    const GOOGLE_CHARTS = 'https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=';
+    const AFIP_QR_URL = 'https://www.afip.gob.ar/fe/qr/?p=';
 
     function __construct($voucher, $config) {
         parent::__construct('P', 'A4', 'es');
@@ -448,7 +448,7 @@ class PDFVoucher extends HTML2PDF {
                 $text_4 = "&nbsp;";
                 $text_5 = "&nbsp;";
             }
-            $qr = 'https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=https://www.afip.gob.ar/fe/qr/?p='. $this->qr_data;
+            $qr =  self::GOOGLE_CHARTS . self::AFIP_QR_URL . $this->qr_data;
             $qr_img = '<img style="width: 13%; margin-left: 130px; margin-top: -20px;" src="'.$qr.'">';
             $this->html .= '        <tr>';
             $this->html .= '		<td class="" style="width: 30%;">' . $text_left . "</td>";
