@@ -10,6 +10,7 @@
         }
     ],
     "require": {
-        "spipu/html2pdf": "^5.0"
+        "ext-gd": "*",
+        "spipu/html2pdf": "^5.2.5"
     }
 }
