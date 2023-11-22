@@ -1,0 +1,21 @@
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+use BitmediaTech\Afipdf\PDFVoucher;
+
+$file = file_get_contents(__DIR__ . '/examples/factura_a.json');
+
+$data = json_decode($file, true);
+$config = array(
+    "TRADE_SOCIAL_REASON" => "NICOLAS MORAS",
+    "TRADE_CUIT" => "20310960625",
+    "TRADE_ADDRESS" => "BUENOS AIRES",
+    "TRADE_TAX_CONDITION" => "",
+    "TRADE_INIT_ACTIVITY" => "1/12/2015",
+    "VOUCHER_OBSERVATION" => ""
+);
+
+$pdf = new PDFVoucher($data,$config);
+$pdf->emitirPDF("https://www.repuestoslaptop.com.ec/Dinamic/Assets/TemplateEXZO/img/logo-2.png");
+print_r($pdf->output("voucher.pdf", "D"));

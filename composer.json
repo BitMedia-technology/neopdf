@@ -1,5 +1,5 @@
 {
-    "name": "neocomplexx/neopdf",
+    "name": "bitmedia-tech/afipdf",
     "description": "Generador de comprobantes en PDF con el formato de factura electronica Argentina",
     "type": "library",
     "license": "MIT",
@@ -7,8 +7,17 @@
         {
             "name": "NeoComplexx Group S.A.",
             "email": "info@neocomplexx.com"
+        },
+        {
+            "name": "Bitmedia Technologies",
+            "email": "info@bitmedia.technology"
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "BitmediaTech\\Afipdf\\": "src/"
+        }
+    },
     "require": {
         "ext-gd": "*",
         "spipu/html2pdf": "^5.2.5"

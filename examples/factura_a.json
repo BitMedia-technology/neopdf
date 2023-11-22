@@ -1,0 +1,60 @@
+{
+  "idVoucher": 1,
+  "numeroComprobante": "910",
+  "numeroPuntoVenta": 2,
+  "fechaVencimiento": "Segun Cond. de venta",
+  "legend": "El total de este comprobante expresado en moneda de curso legal - Pesos Argentinos - considerandose un tipo de cambio\r\n                   consignado de 370.23 asciende a: AR$ 4335.39",
+  "cae": "73475125318723",
+  "letra": "A",
+  "fechaVencimientoCAE": "2023-11-21",
+  "tipoResponsable": "IVA responsable",
+  "nombreCliente": "Stefanelli Leonardo",
+  "domicilioCliente": "",
+  "fechaComprobante": "20231121",
+  "codigoTipoComprobante": 1,
+  "TipoComprobante": "Factura",
+  "codigoConcepto": 1,
+  "codigoMoneda": "USD",
+  "cotizacionMoneda": 370.23,
+  "fechaDesde": "21-11-2023",
+  "fechaHasta": "21-11-2023",
+  "fechaVtoPago": "21-11-2023",
+  "codigoTipoDocumento": 80,
+  "TipoDocumento": "CUIT",
+  "numeroDocumento": "23254338109",
+  "importeTotal": 11.71,
+  "importeOtrosTributos": 0,
+  "importeGravado": 9.68,
+  "importeNoGravado": 0,
+  "importeExento": 0,
+  "importeIVA": 2.03,
+  "codigoPais": 200,
+  "idiomaComprobante": 1,
+  "NroRemito": 0,
+  "CondicionVenta": "12",
+  "items": [
+    {
+      "codigo": "03.02.003",
+      "scanner": "03.02.003",
+      "descripcion": "Fayon Top roll supporter",
+      "codigoUnidadMedida": 7,
+      "UnidadMedida": "Unidades",
+      "codigoCondicionIVA": 5,
+      "Alic": 21,
+      "cantidad": 1,
+      "porcBonif": 0,
+      "impBonif": 0,
+      "precioUnitario": 10.75,
+      "importeIVA": 2.03,
+      "importeItem": 9.675
+    }
+  ],
+  "subtotivas": [
+    {
+      "Alic": 21,
+      "importe": 2.03
+    }
+  ],
+  "Tributos": [],
+  "CbtesAsoc": []
+}

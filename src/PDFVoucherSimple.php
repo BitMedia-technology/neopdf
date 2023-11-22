@@ -1,5 +1,7 @@
 <?php
-require __DIR__.'/vendor/autoload.php';
+
+namespace BitmediaTech\Afipdf;
+
 use Spipu\Html2Pdf\Html2Pdf;
 
 /**

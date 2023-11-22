@@ -1,5 +1,7 @@
 <?php
-require __DIR__.'/../../autoload.php';
+
+namespace BitmediaTech\Afipdf;
+
 use Spipu\Html2Pdf\Html2Pdf;
 
 /**
@@ -94,7 +96,7 @@ class PDFVoucher extends HTML2PDF {
             $type = $this->lang($this->voucher["TipoComprobante"]);
             $letter = $this->voucher["letra"];
             $number = $this->lang("Punto de venta") . ": " . str_pad($this->voucher["numeroPuntoVenta"], 4, "0", STR_PAD_LEFT) . "   " . $this->lang("Comp. Nro") . ": " . str_pad($this->voucher["numeroComprobante"], 8, "0", STR_PAD_LEFT);
-            $tmp = DateTime::createFromFormat('Ymd',$this->voucher["fechaComprobante"]);
+            $tmp = \DateTime::createFromFormat('Ymd',$this->voucher["fechaComprobante"]);
             $date = $this->lang("Fecha de emisi&oacute;n") . ": " . date_format($tmp, $this->lang('d/m/Y'));
 
             $this->html .= "    <div class='letter'>";
@@ -115,11 +117,11 @@ class PDFVoucher extends HTML2PDF {
             $this->html .= "    <span class='header_margin'>$number</span><br>";
             $this->html .= "    <span class='header_margin'>$date</span>";
             if ($this->voucher["codigoConcepto"] == 2 || $this->voucher["codigoConcepto"] == 3) {
-                $tmp = DateTime::createFromFormat('Ymd',$this->voucher["fechaDesde"]);
+                $tmp = \DateTime::createFromFormat('Ymd',$this->voucher["fechaDesde"]);
                 $service_from = $this->lang("Per&iacute;odo") . ": " . date_format($tmp, $this->lang('d/m/Y'));
-                $tmp = DateTime::createFromFormat('Ymd',$this->voucher["fechaHasta"]);
+                $tmp = \DateTime::createFromFormat('Ymd',$this->voucher["fechaHasta"]);
                 $service_to = $this->lang("al") . " " . date_format($tmp, $this->lang('d/m/Y'));
-                $tmp = DateTime::createFromFormat('Ymd',$this->voucher["fechaVtoPago"]);
+                $tmp = \DateTime::createFromFormat('Ymd',$this->voucher["fechaVtoPago"]);
                 $expiration = "- " . $this->lang("Vencimiento") . ": " . date_format($tmp, $this->lang('d/m/Y'));
                 $this->html .= "<br>";
                 $this->html .= "    <span class='header_margin'>$service_from</span>";
@@ -142,7 +144,7 @@ class PDFVoucher extends HTML2PDF {
             $this->html .= "</tr>";
             $this->html .= "<tr>";
             $this->html .= "<td style='width:50%;'>" . $this->lang("Condici&oacute;n frente al IVA") . ": " . strtoupper($this->config["TRADE_TAX_CONDITION"]) . "</td>";
-            $tmp = DateTime::createFromFormat('d/m/Y',$this->config["TRADE_INIT_ACTIVITY"]);
+            $tmp = \DateTime::createFromFormat('d/m/Y',$this->config["TRADE_INIT_ACTIVITY"]);
             $this->html .= "<td class='right-text' style='width:49%;'>" . $this->lang("Fecha de inicio de actividades") . ": " . date_format($tmp, $this->lang('d/m/Y')) . "</td>";
             $this->html .= "</tr>";
             $this->html .= "</table>";
@@ -435,7 +437,7 @@ class PDFVoucher extends HTML2PDF {
                 $text_2 = $this->voucher["cae"];
                 $text_3 = $this->lang("Fecha Vto. CAE") .": ";
 
-                $tmp = DateTime::createFromFormat('Y-m-d',$this->voucher["fechaVencimientoCAE"]);
+                $tmp = \DateTime::createFromFormat('Y-m-d',$this->voucher["fechaVencimientoCAE"]);
                 $text_4 = date_format($tmp, $this->lang('d/m/Y'));
 
                 $quotation = number_format((float) round($this->voucher["cotizacionMoneda"], 2), 2, '.', '');
