@@ -22,6 +22,14 @@ class PDFVoucher extends HTML2PDF {
     const GOOGLE_CHARTS = 'https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=';
     const AFIP_QR_URL = 'https://www.afip.gob.ar/fe/qr/?p=';
 
+    const TYPES_TAXPAYER = [
+        "RI" => "Responsable Inscripto",
+        "RS" => "Monotributista",
+        "EX" => "Exento",
+        "CF" => "Consumidor Final",
+    ];
+
+
     function __construct($voucher, $config) {
         parent::__construct('P', 'A4', 'es');
         $this->config = $config;
@@ -140,10 +148,10 @@ class PDFVoucher extends HTML2PDF {
             $this->html .= "</tr>";
             $this->html .= "<tr>";
             $this->html .= "<td style='width:50%;'>" . $this->lang("Domicilio comercial") . ": " . strtoupper($this->config["TRADE_ADDRESS"]) . "</td>";
-            $this->html .= "<td class='right-text' style='width:49%;'>" . $this->lang("Ingresos Brutos") . ": " . $this->config["TRADE_CUIT"] . "</td>";
+            $this->html .= "<td class='right-text' style='width:49%;'>" . $this->lang("Ingresos Brutos") . ": " . $this->config["GROSS_INCOME"] . "</td>";
             $this->html .= "</tr>";
             $this->html .= "<tr>";
-            $this->html .= "<td style='width:50%;'>" . $this->lang("Condici&oacute;n frente al IVA") . ": " . strtoupper($this->config["TRADE_TAX_CONDITION"]) . "</td>";
+            $this->html .= "<td style='width:50%;'>" . $this->lang("Condici&oacute;n frente al IVA") . ": " . strtoupper(self::TYPES_TAXPAYER[$this->config["TRADE_TAX_CONDITION"]]) . "</td>";
             $tmp = \DateTime::createFromFormat('d/m/Y',$this->config["TRADE_INIT_ACTIVITY"]);
             $this->html .= "<td class='right-text' style='width:49%;'>" . $this->lang("Fecha de inicio de actividades") . ": " . date_format($tmp, $this->lang('d/m/Y')) . "</td>";
             $this->html .= "</tr>";
@@ -168,7 +176,7 @@ class PDFVoucher extends HTML2PDF {
             $this->html .= "<td class='right-text' style='width:49%;'>" . $text . "</td>";
             $this->html .= "</tr>";
             $this->html .= "<tr>";
-            $text = $this->lang("Condici&oacute;n frente al IVA") . ": " . $this->lang($this->voucher["tipoResponsable"]);
+            $text = $this->lang("Condici&oacute;n frente al IVA") . ": " . strtoupper(self::TYPES_TAXPAYER[$this->voucher["tipoResponsable"]]);
             $this->html .= "<td style='width:50%;'>" . $text . "</td>";
             $text = $this->lang("Domicilio") . ": " . $this->voucher["domicilioCliente"];
             $this->html .= "<td class='right-text' style='width:49%;'>" . $text . "</td>";

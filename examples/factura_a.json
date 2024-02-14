@@ -7,9 +7,9 @@
   "cae": "73475125318723",
   "letra": "A",
   "fechaVencimientoCAE": "2023-11-21",
-  "tipoResponsable": "IVA responsable",
+  "tipoResponsable": "RI",
   "nombreCliente": "Stefanelli Leonardo",
-  "domicilioCliente": "",
+  "domicilioCliente": "Buenos Aires",
   "fechaComprobante": "20231121",
   "codigoTipoComprobante": 1,
   "TipoComprobante": "Factura",
@@ -31,7 +31,7 @@
   "codigoPais": 200,
   "idiomaComprobante": 1,
   "NroRemito": 0,
-  "CondicionVenta": "12",
+  "CondicionVenta": "Segun fecha de vencimiento",
   "items": [
     {
       "codigo": "03.02.003",
