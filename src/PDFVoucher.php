@@ -27,6 +27,7 @@ class PDFVoucher extends HTML2PDF {
         "RS" => "Monotributista",
         "EX" => "Exento",
         "CF" => "Consumidor Final",
+        "General" => "General",
     ];
 
 
