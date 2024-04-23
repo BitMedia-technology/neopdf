@@ -47,11 +47,30 @@
       "precioUnitario": 10.75,
       "importeIVA": 2.03,
       "importeItem": 9.675
+    },
+    {
+      "codigo": "03.02.003",
+      "scanner": "03.02.003",
+      "descripcion": "Fayon Top roll supporter 10.5",
+      "codigoUnidadMedida": 7,
+      "UnidadMedida": "Unidades",
+      "codigoCondicionIVA": 5,
+      "Alic": 10.5,
+      "cantidad": 1,
+      "porcBonif": 0,
+      "impBonif": 0,
+      "precioUnitario": 10.75,
+      "importeIVA": 2.03,
+      "importeItem": 9.675
     }
   ],
   "subtotivas": [
     {
       "Alic": 21,
+      "importe": 2.03
+    },
+    {
+      "Alic": 10.5,
       "importe": 2.03
     }
   ],
