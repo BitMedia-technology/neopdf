@@ -19,7 +19,7 @@ class PDFVoucher extends HTML2PDF {
     private $lang = array();
     const LANG_EN = 2;
 
-    const GOOGLE_CHARTS = 'https://chart.googleapis.com/chart?cht=qr&chs=150x150&chl=';
+    const GOOGLE_CHARTS = 'https://quickchart.io/qr?ecLevel=L&text=';
     const AFIP_QR_URL = 'https://www.afip.gob.ar/fe/qr/?p=';
 
     const TYPES_TAXPAYER = [
