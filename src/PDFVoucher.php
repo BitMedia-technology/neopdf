@@ -33,6 +33,10 @@ class PDFVoucher extends HTML2PDF {
 
     function __construct($voucher, $config) {
         parent::__construct('P', 'A4', 'es');
+
+        // Permitir quickchart.io para generar códigos QR
+        $this->getSecurityService()->addAllowedHost('quickchart.io');
+
         $this->config = $config;
         $vconfig = array();
         //$vconfig["footer"] = false;
